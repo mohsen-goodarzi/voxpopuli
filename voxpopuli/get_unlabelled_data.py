@@ -47,7 +47,7 @@ def get_metadata(out_root, subset):
     url = f"{DOWNLOAD_BASE_URL}/annotations/{filename}.tsv.gz"
     tsv_path = out_root / Path(url).name
     if not tsv_path.exists():
-        download_url(url, tsv_path.as_posix(), hash_prefix=None)
+        download_url_to_file(url, tsv_path.as_posix(), hash_prefix=None)
     if subset == '10k_sd':
         with gzip.open(tsv_path, mode="rt") as f:
             rows = [
