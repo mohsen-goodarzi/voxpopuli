@@ -27,7 +27,7 @@ def _segment(item: Tuple[str, List[Tuple[str, float, float]], str]):
     for i, s, e in segments:
         start, end = int(s * sr), min(waveform.size(1), int(e * sr))
         out_path = Path(out_root) / lang / year / f'{event_id}_{i}.ogg'
-        torchaudio.save(out_path.as_posix(), waveform[:, start: end], sr)
+        torchaudio.save(out_path.as_posix(), waveform[:, start: end], sr, backend="sox")
 
 
 def get_metadata(out_root, subset):
