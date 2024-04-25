@@ -82,7 +82,7 @@ def get(args):
         items[path.as_posix()].append((seg_no, float(start), float(end)))
     items = [(k, v, out_root.as_posix()) for k, v in items.items()]
     print(f"Segmenting {len(items):,} files...")
-    multiprocess_run(items, _segment, n_workers=max(1, multiprocessing.cpu_count()-4))
+    multiprocess_run(items, _segment, n_workers=max(1, multiprocessing.cpu_count()//2))
 
 
 def get_args():
